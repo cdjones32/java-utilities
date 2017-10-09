@@ -5,9 +5,20 @@ With many of my Java Projects, I continually find a common set of functions that
 ## MapBuilder
 Simple MapBuilder class. Mostly lifted from [AndersDJohnson/map-builder-java](https://github.com/AndersDJohnson/map-builder-java).
 
-```
-val em = MapBuilder.<String, Integer>of(HashMap.class)
-            .put("a", 1)
-            .put("b", 2)
-            .build();
+```java
+Map<String, Integer> defaultHashMap = new MapBuilder<String, Integer>()
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Integer> treeMap = new MapBuilder<String, Integer>(TreeMap.class)
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Animal> existingMapInstance = new HashMap<String, Animal>();
+
+Map<String, Animal> existingMap = new MapBuilder<>(existingMapInstance)
+    .put("a", new Animal())
+    .build();
 ```
