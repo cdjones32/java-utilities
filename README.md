@@ -4,9 +4,19 @@ With many of my Java Projects, I continually find a common set of functions that
 
 ## MapBuilder
 
-```
-val em = MapBuilder.<String, Integer>of(HashMap.class)
+```java
+val defaultHashMap = new MapBuilder<String, Integer>()
             .put("a", 1)
             .put("b", 2)
+            .build();
+            
+val treeMap = new MapBuilder<String, Integer>(TreeMap.class)
+            .put("a", 1)
+            .put("b", 2)
+            .build();
+            
+val existingMapInstance = new HashMap<String, Animal>();
+val existingMap = new MapBuilder<>(existingMapInstance)
+            .put("a", new Animal())
             .build();
 ```
