@@ -6,10 +6,8 @@ import org.junit.Test;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import org.hamcrest.Matchers;
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  *
@@ -29,13 +27,10 @@ public class MapBuilderTest {
             // ...
             .build();
 
-        assertThat(m, Matchers.hasKey("a"));
-        assertThat(m, Matchers.hasKey("b"));
-        assertThat(m, Matchers.hasKey("c"));
+        assertThat(m).containsKeys("a", "b", "c");
+        assertThat(m).containsValues(1);
 
-        assertThat(m, Matchers.hasValue(1));
-
-        System.out.println(m);
+        // System.out.println(m);
     }
 
     @Test
@@ -50,14 +45,10 @@ public class MapBuilderTest {
             // ...
             .build();
 
-        assertThat(m, Matchers.hasKey("a"));
-        assertThat(m, Matchers.hasKey("b"));
-        assertThat(m, Matchers.hasKey("c"));
-        assertThat(m, Matchers.hasKey("d"));
+        assertThat(m).containsKeys("a", "b", "c", "d");
+        assertThat(m).containsValues(d);
 
-        assertThat(m, Matchers.hasValue(d));
-
-        System.out.println(m);
+//        System.out.println(m);
     }
 
     @Test
@@ -67,19 +58,15 @@ public class MapBuilderTest {
             .put("a", new Animal())
             .put("b", d)
             .putAll(new HashMap<String, Dog>())
-            .put(new AbstractMap.SimpleEntry<String,Animal>("c", new Animal()))
+            .put(new AbstractMap.SimpleEntry<>("c", new Animal()))
             .put(new AbstractMap.SimpleEntry<String,Animal>("d", new Dog()))
             // ...
             .build();
 
-        assertThat(m, Matchers.hasKey("a"));
-        assertThat(m, Matchers.hasKey("b"));
-        assertThat(m, Matchers.hasKey("c"));
-        assertThat(m, Matchers.hasKey("d"));
+        assertThat(m).containsKeys("a", "b", "c", "d");
+        assertThat(m).containsValues(d);
 
-        assertThat(m, Matchers.hasValue(d));
-
-        System.out.println(m);
+//        System.out.println(m);
     }
 
     @Test
@@ -97,28 +84,9 @@ public class MapBuilderTest {
             .remove(bEntry)
             .build();
 
-        assertThat(m.keySet(), Matchers.empty());
-        assertThat(m.values(), Matchers.empty());
+        assertThat(m.keySet()).isEmpty();
+        assertThat(m.values()).isEmpty();
 
-        System.out.println(m);
-    }
-
-    @Test
-    public void name() throws Exception {
-Map<String, Integer> defaultHashMap = new MapBuilder<String, Integer>()
-    .put("a", 1)
-    .put("b", 2)
-    .build();
-
-Map<String, Integer> treeMap = new MapBuilder<String, Integer>(TreeMap.class)
-    .put("a", 1)
-    .put("b", 2)
-    .build();
-
-Map<String, Animal> existingMapInstance = new HashMap<String, Animal>();
-Map<String, Animal> existingMap = new MapBuilder<>(existingMapInstance)
-    .put("a", new Animal())
-    .build();
-
+//        System.out.println(m);
     }
 }
