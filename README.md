@@ -5,18 +5,19 @@ With many of my Java Projects, I continually find a common set of functions that
 ## MapBuilder
 
 ```java
-val defaultHashMap = new MapBuilder<String, Integer>()
-            .put("a", 1)
-            .put("b", 2)
-            .build();
-            
-val treeMap = new MapBuilder<String, Integer>(TreeMap.class)
-            .put("a", 1)
-            .put("b", 2)
-            .build();
-            
-val existingMapInstance = new HashMap<String, Animal>();
-val existingMap = new MapBuilder<>(existingMapInstance)
-            .put("a", new Animal())
-            .build();
+Map<String, Integer> defaultHashMap = new MapBuilder<String, Integer>()
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Integer> treeMap = new MapBuilder<String, Integer>(TreeMap.class)
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Animal> existingMapInstance = new HashMap<String, Animal>();
+
+Map<String, Animal> existingMap = new MapBuilder<>(existingMapInstance)
+    .put("a", new Animal())
+    .build();
 ```
