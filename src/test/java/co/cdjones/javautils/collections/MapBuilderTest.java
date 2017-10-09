@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import org.hamcrest.Matchers;
@@ -62,7 +63,7 @@ public class MapBuilderTest {
     @Test
     public void testMapBuilderClass() throws InstantiationException, IllegalAccessException {
         Animal d = new Dog();
-        val m = MapBuilder.<String, Animal>create()
+        val m = new MapBuilder<String, Animal>()
             .put("a", new Animal())
             .put("b", d)
             .putAll(new HashMap<String, Dog>())
@@ -86,7 +87,7 @@ public class MapBuilderTest {
 
         val bEntry = new AbstractMap.SimpleEntry<String,Integer>("b", 2);
 
-        val em = MapBuilder.<String, Integer>of(HashMap.class)
+        val em = new MapBuilder<String, Integer>(HashMap.class)
             .put("a", 1)
             .put(bEntry)
             .build();
@@ -102,4 +103,22 @@ public class MapBuilderTest {
         System.out.println(m);
     }
 
+    @Test
+    public void name() throws Exception {
+Map<String, Integer> defaultHashMap = new MapBuilder<String, Integer>()
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Integer> treeMap = new MapBuilder<String, Integer>(TreeMap.class)
+    .put("a", 1)
+    .put("b", 2)
+    .build();
+
+Map<String, Animal> existingMapInstance = new HashMap<String, Animal>();
+Map<String, Animal> existingMap = new MapBuilder<>(existingMapInstance)
+    .put("a", new Animal())
+    .build();
+
+    }
 }

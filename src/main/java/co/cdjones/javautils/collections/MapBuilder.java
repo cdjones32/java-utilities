@@ -17,14 +17,6 @@ public class MapBuilder<K,V> {
         this.map = new HashMap<>();
     }
 
-    public static <K, V> MapBuilder<K, V> of(Class<? extends Map> c) {
-        return new MapBuilder<>(c);
-    }
-
-    public static <K, V> MapBuilder<K, V> create() {
-        return new MapBuilder<>();
-    }
-
     @SneakyThrows
     @SuppressWarnings("unchecked")
     public MapBuilder(Class<? extends Map> c) {
