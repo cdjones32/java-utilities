@@ -17,8 +17,6 @@ out/
 bin/
 build/
 
-.Keka*/
-
 # Archives
 *.tar
 *.tar.gz
@@ -32,24 +30,8 @@ build/
 #Ignore HSQLDB generated files
 *.log
 
-#Ignore the sass cache
-.sass-cache/
-
-# Service-now Sync
-.sync_data/
-
-# Vertx Temp
-.vertx/
-
 # CSS Map files
 *.css.map
-
-#Ignore development environment specific config
-soapbox.properties
-
-#Ignore developer specific config
-developer.properties
-*.developer.yaml
 
 #Ignore JRebel configuration files.
 rebel.xml
@@ -59,15 +41,3 @@ classes/test
 
 # Ignore cookies.json from the test module
 cookies.json
-
-node_modules
-
-# Ignore the massive stanford file
-stanford-english-corenlp-2016-01-10-models.jar
-
-# Ignore the node/bower modules, as theses should be loaded on each developers machine to ensure they match their node version
-node_modules/
-bower_components/
-
-# Ignore Ansible Retry files (application specific)
-*.retry
