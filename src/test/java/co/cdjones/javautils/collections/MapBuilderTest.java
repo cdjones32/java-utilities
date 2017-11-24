@@ -89,4 +89,22 @@ public class MapBuilderTest {
 
 //        System.out.println(m);
     }
+
+    @Test
+    public void testStartsWithStatic() throws Exception {
+        val defaultHashMap = MapBuilder.startWith("a", 1).put("b", 2).build();
+
+        assertThat(defaultHashMap).containsKeys("a", "b");
+        assertThat(defaultHashMap).containsValues(1, 2);
+    }
+
+    @Test
+    public void testStartsWithStaticExistingMap() throws Exception {
+
+        val m1 = MapBuilder.startWith("a", 1).put("b", 2).build();
+        val m2 = MapBuilder.startWith(m1).put("c", 3).build();
+
+        assertThat(m2).containsKeys("a", "b", "c");
+        assertThat(m2).containsValues(1, 2, 3);
+    }
 }

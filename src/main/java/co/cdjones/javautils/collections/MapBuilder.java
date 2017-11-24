@@ -17,6 +17,14 @@ public class MapBuilder<K,V> {
         this.map = new HashMap<>();
     }
 
+    public static <K, V> MapBuilder<K, V> startWith(K key, V value) {
+        return new MapBuilder<K, V>().put(key, value);
+    }
+
+    public static <K, V> MapBuilder<K, V> startWith(Map<K, V> map) {
+        return new MapBuilder<K, V>().putAll(map);
+    }
+
     @SneakyThrows
     @SuppressWarnings("unchecked")
     public MapBuilder(Class<? extends Map> c) {

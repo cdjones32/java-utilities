@@ -45,3 +45,9 @@ Map<String, Animal> existingMap = new MapBuilder<>(existingMapInstance)
     .put("a", new Animal())
     .build();
 ```
+
+Or, using something like Project Lombok and the static methods...
+```java
+val defaultHashMap = MapBuilder.startWith("a", 1).put("b", 2).build();
+
+```
