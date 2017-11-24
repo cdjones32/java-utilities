@@ -25,6 +25,10 @@ public class MapBuilder<K,V> {
         return new MapBuilder<K, V>().putAll(map);
     }
 
+    public static <K, V> Map<K, V> of(K key, V value) {
+        return new MapBuilder<K, V>().put(key, value).build();
+    }
+
     @SneakyThrows
     @SuppressWarnings("unchecked")
     public MapBuilder(Class<? extends Map> c) {
