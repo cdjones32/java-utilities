@@ -23,6 +23,10 @@ dependencies {
     testCompile "org.powermock:powermock-api-mockito:1.6.4"
 }
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
 
 buildscript {
     repositories {
