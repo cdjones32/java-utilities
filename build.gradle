@@ -2,6 +2,7 @@ group 'co.cdjones'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'maven'
 
 sourceCompatibility = 1.8
 
@@ -26,6 +27,10 @@ dependencies {
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourcesJar
 }
 
 buildscript {
