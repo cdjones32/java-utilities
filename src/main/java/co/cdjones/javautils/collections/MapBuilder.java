@@ -17,6 +17,13 @@ public class MapBuilder<K,V> {
         this.map = new HashMap<>();
     }
 
+    public static MapBuilder<String, Object> stringToObject() { return new MapBuilder<String, Object>(); }
+    public static MapBuilder<String, Object> SO() { return new MapBuilder<String, Object>(); }
+    public static MapBuilder<String, Object> SO(String key, Object value) { return new MapBuilder<String, Object>().put(key, value); }
+
+
+    public static <K, V> MapBuilder<K, V> ofType(Class<K> keyClass, Class<V> valueClass) { return new MapBuilder<>(); }
+
     public static <K, V> MapBuilder<K, V> startWith(K key, V value) {
         return new MapBuilder<K, V>().put(key, value);
     }

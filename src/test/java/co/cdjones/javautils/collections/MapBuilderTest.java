@@ -107,4 +107,11 @@ public class MapBuilderTest {
         assertThat(m2).containsKeys("a", "b", "c");
         assertThat(m2).containsValues(1, 2, 3);
     }
+
+    @Test
+    public void testTyping() {
+        Map<String, Object> m1 = MapBuilder.ofType(String.class, Object.class).put("e", "e").build();
+        Map<String, Object> m2 = MapBuilder.SO().build();
+        Map<String, Object> m3 = MapBuilder.SO("E", "e").build();
+    }
 }
