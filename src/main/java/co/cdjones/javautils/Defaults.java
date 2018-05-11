@@ -12,4 +12,6 @@ public class Defaults {
     public static <K, V> Map<K, V> defaultIfNull( Map<K, V> map ) {
         return map == null ? new HashMap<>() : map;
     }
+
+    public static <T> T defaultIfNull(T obj, T defaultValue) { return obj == null ? defaultValue : obj; }
 }
